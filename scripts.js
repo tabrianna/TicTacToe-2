@@ -7,7 +7,11 @@
     // next to each @TODO you will find tasks that need to be finished
 
 // The variable will change from X to O based on what player turn it is. We need to hold this so we can place an X or O on the board when they're clicked.
-const board = ["","",""]
+const board = [
+["","",""], 
+["","",""],
+["","",""]
+]
 
 
 
@@ -55,7 +59,7 @@ const addMarker = (id) => {
   // document
   // .innerHTML 
 
-  checkforWin()
+  checkForWin()
   board[row][column] = currentMarker
 }
 
@@ -69,8 +73,8 @@ const addMarker = (id) => {
 
 
 // This "changeMarker" function changes "X" to "O" in the "currentMarker" variable or "O" to "X"
-const checkForWin = () => {
-  if(checkForWin === "X"){
+const changeMarker = () => {
+  if(currentMarker === "X"){
     currentMarker = "O"
   } else {
     currentMarker = "X"
@@ -122,17 +126,33 @@ const checkForWin = () => {
 const horizontalWin = () => {
   if((board[0][0] == "X" && board[0][1] == "X" && board[0][2] == "X") 
         || (board[0][0] == "O" && board[0][1] == "O" && board[0][2] == "O")
-    )
+        //need to add win conditions for row 2 & 3
+        || (board[1][0] == "X" && board [1][1] == "X" && board [1][2] == "X")
+        || (board[1][0] == "O" && board [1][1] == "O" && board [1][2] == "O")
+
+        ||(board[2][0] == "X" && board[2][1] == "X" && board[2][2] == "X")
+        ||(board[2][0] == "O" && board[2][1] == "O" && board[2][2] == "O")
+
+    ){console.log("horizontalWin")}
 }
 
 const verticalWin = () => {
   if((board[0][0] == "X" && board[1][0] == "X" && board[2][0] == "X") 
         || (board[0][0] == "O" && board[1][0] == "O" && board[2][0] == "O")
-    )
+
+        || (board[0][1] == "X" && board[1][1] == "X" && board[2][1] == "X")
+        || (board[0][1] == "O" && board[1][1] == "O" && board[2][1] == "O")
+
+        || (board[0][2] == "X" && board[1][2] == "X" && board[2][2] == "X")
+        || (board[0][2] == "O" && board[1][2] == "O" && board[2][2] == "O")
+    ){console.log("verticalWin")}
 }
 
 const diagonalWin = () => {
   if((board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X") 
         || (board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O")
-    )
+
+        || (board[0][2] == "X" && board[1][1] == "X" && board[2][0] == "X")
+        || (board[0][2] == "O" && board[1][1] == "O" && board[2][0] == "O")
+    ){console.log("diagonalWin")}
 }
